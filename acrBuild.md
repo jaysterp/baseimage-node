@@ -6,7 +6,6 @@ az acr build -t baseimages/node:9-alpine -f ./node-alpine.Dockerfile .
 ## HelloWorld Image
 ```sh
 az acr build -t demo42/helloworld:{{.Build.ID}}  .
-```
 
 az acr build-task create \
   -n baseimagenode \
@@ -20,3 +19,4 @@ az acr build-task create \
                          --name $GIT_TOKEN_NAME \
                          --query value -o tsv) \
   --registry $ACR_NAME 
+```

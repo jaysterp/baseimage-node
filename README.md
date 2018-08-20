@@ -7,12 +7,13 @@ https://github.com/demo42/baseimage-node
 ## Setup defaults
 
 ```sh
-export DEMO_NAME=demo42
+export DEMO_NAME=demo43
 export ACR_NAME=$DEMO_NAME
 export AKV_NAME=$DEMO_NAME
 export LOCATION=eastus
 export RESOURCE_GROUP=$DEMO_NAME
 export BASE_IMAGE_REPO=https://github.com/demo42/baseimage-node
+export GIT_TOKEN_NAME=${DEMO_NAME}-git-token
 
 az configure --defaults acr=$ACR_NAME
 ```
@@ -51,7 +52,7 @@ az acr build-task create \
   -t baseimages/node:9-alpine \
   --git-access-token $(az keyvault secret show \
                          --vault-name $AKV_NAME \
-                         --name demo42-git-token \
+                         --name $GIT_TOKEN_NAME \
                          --query value -o tsv)
 
 ```

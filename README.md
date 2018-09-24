@@ -46,8 +46,9 @@ az acr create -n $ACR_NAME -l $LOCATION -g $RESOURCE_GROUP --sku standard
 ## Create the Task
 
 ```sh
-az acr build-task create \
-  -n baseimagenode \
+az acr task create \
+  -n baseimage-node \
+  -f Dockerfile \
   --context $BASE_IMAGE_REPO \
   -t baseimages/node:9-alpine \
   --git-access-token $(az keyvault secret show \
